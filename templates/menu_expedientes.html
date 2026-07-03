@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Expedientes Viejos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: sans-serif; background: #f8f9fc; display: flex; flex-direction: column; align-items: center; padding: 50px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .btn-card { padding: 40px; text-align: center; background: #1e293b; color: white; border-radius: 15px; text-decoration: none; transition: 0.3s; width: 150px; }
+        .btn-card:hover { transform: scale(1.05); background: #334155; }
+        .btn-card i { font-size: 2.5rem; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Expedientes</h1>
+    <div class="grid">
+        <a href="/registrar_expediente" class="btn-card">
+            <i class="fas fa-plus"></i><br>Registrar Nuevo
+        </a>
+        <a href="/buscar_expediente" class="btn-card">
+            <i class="fas fa-search"></i><br>Buscar Expediente
+        </a>
+    </div>
+    <br><a href="/menu">Volver al menú principal</a>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asistencia Diaria</title>
+    <style>
+        body { font-family: sans-serif; background: #f8f9fa; padding: 20px; }
+        .box { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .row { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
+        .btn { width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Asistencia: {{ fecha }}</h2>
+        
+        {% if grados %}
+        <p>Seleccionar Curso:</p>
+        <form method="GET" action="/asistencia">
+            <select name="grado" onchange="this.form.submit()" style="width:100%; padding:8px;">
+                {% for g in grados %}
+                <option value="{{ g.grado }}" {% if g.grado == grado %}selected{% endif %}>{{ g.grado }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        {% else %}
+        <p>Curso: <strong>{{ grado }}</strong></p>
+        {% endif %}
+
+        <form action="/asistencia?grado={{ grado }}" method="POST">
+            {% for alumno in alumnos %}
+            <div class="row">
+                <span>{{ alumno.nombres }} {{ alumno.apellidos }}</span>
+                <input type="checkbox" name="presente" value="{{ alumno.id }}" checked>
+            </div>
+            {% else %}
+            <p>No hay alumnos en este grado.</p>
+            {% endfor %}
+            
+            <button type="submit" class="btn">Guardar Asistencia</button>
+        </form>
+        <a href="/menu" style="display:block; text-align:center; margin-top:10px;">Volver al menú</a>
+    </div>
+</body>
+</html>

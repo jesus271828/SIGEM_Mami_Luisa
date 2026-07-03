@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador Estudiantes</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fc; padding: 40px; }
+        .container { max-width: 1100px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        
+        h2 { color: #1e293b; margin-top: 0; }
+
+        .search-box { margin-bottom: 30px; display: flex; gap: 10px; }
+        input[type="text"] { padding: 12px; border: 1px solid #d1d3e2; border-radius: 8px; flex-grow: 1; font-size: 14px; }
+        button { padding: 10px 25px; background: #4e73df; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #2e59d9; }
+
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; }
+        th { background: #1e293b; color: white; padding: 15px; font-size: 13px; text-transform: uppercase; }
+        td { padding: 15px; border-bottom: 1px solid #e3e6f0; font-size: 14px; color: #5a5c69; text-align: center; }
+        tr:hover { background: #f8f9fc; }
+
+        .back-link { display: inline-block; margin-top: 20px; color: #858796; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2><i class="fas fa-search"></i> Buscar Estudiante</h2>
+    
+    <form method="POST" class="search-box">
+        <input type="text" name="nombre_buscar" placeholder="Escribe el nombre o apellido del estudiante..." required>
+        <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Estudiante</th>
+                <th>Grado</th>
+                <th>Datos del Padre</th>
+                <th>Datos de la Madre</th>
+                <th>Tutor</th>
+                <th>Emergencia</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in resultados %}
+            <tr>
+                <td>{{ a['id'] }}</td>
+                <td style="font-weight: bold; color: #4e73df;">{{ a['nombres'] }} {{ a['apellidos'] }}</td>
+                <td>{{ a['grado'] }}</td>
+                <td>{{ a['padre_nombre'] }}</td>
+                <td>{{ a['madre_nombre'] }}</td>
+                <td>{{ a['tutor_nombre'] }}</td>
+                <td>{{ a['tel_emergencia'] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" style="padding: 30px; color: #858796;">No se encontraron resultados</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="/menu_busqueda" class="back-link"><i class="fas fa-arrow-left"></i> Volver al menú de búsqueda</a>
+</div>
+</body>
+</html>

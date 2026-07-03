@@ -1,0 +1,61 @@
+/* Configuración general */
+body {
+    background-color: #ffffff; /* Fondo blanco */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra superior */
+.navbar {
+    background-color: #1a2a40; /* Azul oscuro elegante */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 50px;
+}
+
+/* Contenedor de botones */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los botones (tarjetas) */
+.card {
+    width: 220px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Colores para cada tarjeta */
+.bg-blue { background-color: #5c6bc0; }
+.bg-green { background-color: #66bb6a; }
+.bg-yellow { background-color: #fdd835; color: #333; }
+.bg-gray { background-color: #90a4ae; }
+.bg-cyan { background-color: #26c6da; }
+
+.btn-delete:hover { background: #be2617 !important; transform: scale(1.05); }
+.btn-container a:hover { background: #6e707e !important; transform: scale(1.05); }

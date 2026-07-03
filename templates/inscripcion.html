@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ficha de Inscripción - SIGEM Mami Luisa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root { --primary: #4e73df; --secondary: #858796; --success: #1cc88a; --bg: #f8f9fc; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: var(--bg); padding: 20px; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 3px solid var(--primary); margin-bottom: 30px; padding-bottom: 20px; }
+        section { margin-bottom: 35px; padding: 20px; border: 1px solid #e3e6f0; border-radius: 10px; position: relative; }
+        h3 { background: white; margin-top: -35px; width: fit-content; padding: 0 10px; color: var(--primary); font-size: 16px; font-weight: bold; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #5a5c69; }
+        input, select { padding: 8px; border: 1px solid #d1d3e2; border-radius: 5px; font-size: 13px; }
+        .btn-container { text-align: center; margin-top: 30px; }
+        .btn-save { background: var(--success); color: white; border: none; padding: 15px 50px; border-radius: 30px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>CENTRO EDUCATIVO MAMI LUISA, S.R.L</h1>
+        <h2>FICHA DE ADMISIÓN</h2>
+    </div>
+
+    <form action="/inscripcion" method="POST">
+        <section>
+            <h3><i class="fas fa-user-graduate"></i> DATOS DEL ESTUDIANTE</h3>
+            <div class="grid">
+             <div class="form-group"><label>Grado / Curso</label>
+    <select name="grado" required>
+        <option value="1A">1ro A</option>
+        <option value="1B">1ro B</option>
+        <option value="2">2do</option>
+        <option value="3">3ro</option>
+        <option value="4">4to</option>
+        <option value="5">5to</option>
+        <option value="6">6to</option>
+    </select>
+</div>
+                <div class="form-group"><label>Año Escolar</label><input type="text" name="ano_escolar" value="2025-2026" readonly></div>
+                <div class="form-group"><label>Fecha de Inscripción</label><input type="date" name="fecha_inscripcion" required></div>
+                
+                <div class="form-group"><label>Nombres</label><input type="text" name="nombres" required></div>
+                <div class="form-group"><label>Apellidos</label><input type="text" name="apellidos" required></div>
+                <div class="form-group"><label>Fecha Nacimiento</label><input type="date" name="fecha_nacimiento"></div>
+                <div class="form-group"><label>Lugar Nacimiento</label><input type="text" name="lugar_nacimiento"></div>
+                <div class="form-group"><label>Nacionalidad</label><input type="text" name="nacionalidad"></div>
+                <div class="form-group"><label>Dirección</label><input type="text" name="direccion"></div>
+                <div class="form-group"><label>Edad</label><input type="number" name="edad"></div>
+                <div class="form-group"><label>Sexo</label><select name="sexo"><option>M</option><option>F</option></select></div>
+                <div class="form-group"><label>Cant. Hermanos</label><input type="number" name="cant_hermanos"></div>
+                <div class="form-group"><label>Edades Hermanos</label><input type="text" name="edades_hermanos"></div>
+                <div class="form-group"><label>Lugar que ocupa</label><input type="text" name="lugar_ocupa"></div>
+                <div class="form-group"><label>Tipo Sangre</label><input type="text" name="tipo_sangre"></div>
+                <div class="form-group"><label>Seguro Médico</label><input type="text" name="seguro_medico"></div>
+                <div class="form-group"><label>Alergias</label><input type="text" name="alergias"></div>
+                <div class="form-group"><label>Medicamentos</label><input type="text" name="medicamentos"></div>
+                <div class="form-group"><label>Centro Médico</label><input type="text" name="centro_medico"></div>
+                <div class="form-group"><label>Pediatra</label><input type="text" name="pediatra"></div>
+                <div class="form-group"><label>Tel. Emergencia</label><input type="text" name="tel_emergencia"></div>
+                <div class="form-group"><label>Nombre Adulto</label><input type="text" name="emerg_nombre"></div>
+                <div class="form-group"><label>Parentesco</label><input type="text" name="emerg_parentesco"></div>
+            </div>
+        </section>
+
+        <section><h3><i class="fas fa-user-tie"></i> DATOS DEL PADRE</h3>
+            <div class="grid">
+                <div class="form-group"><label>Nombres y Apellidos</label><input type="text" name="padre_nombre"></div>
+                <div class="form-group"><label>Sector</label><input type="text" name="padre_sector"></div>
+                <div class="form-group"><label>Dirección</label><input type="text" name="padre_direccion"></div>
+                <div class="form-group"><label>Cédula</label><input type="text" name="padre_cedula"></div>
+                <div class="form-group"><label>Oficio / Ocupación</label><input type="text" name="padre_profesion"></div>
+                <div class="form-group"><label>Nivel Académico</label><input type="text" name="padre_nivel"></div>
+                <div class="form-group"><label>Religión</label><input type="text" name="padre_religion"></div>
+                <div class="form-group"><label>Tel. Personal</label><input type="text" name="padre_telefono"></div>
+                <div class="form-group"><label>Tel. Trabajo</label><input type="text" name="padre_tel_trabajo"></div>
+                <div class="form-group"><label>Correo</label><input type="email" name="padre_email"></div>
+            </div>
+        </section>
+
+        <section><h3><i class="fas fa-user-nurse"></i> DATOS DE LA MADRE</h3>
+            <div class="grid">
+                <div class="form-group"><label>Nombres y Apellidos</label><input type="text" name="madre_nombre"></div>
+                <div class="form-group"><label>Sector</label><input type="text" name="madre_sector"></div>
+                <div class="form-group"><label>Dirección</label><input type="text" name="madre_direccion"></div>
+                <div class="form-group"><label>Cédula</label><input type="text" name="madre_cedula"></div>
+                <div class="form-group"><label>Oficio / Ocupación</label><input type="text" name="madre_profesion"></div>
+                <div class="form-group"><label>Nivel Académico</label><input type="text" name="madre_nivel"></div>
+                <div class="form-group"><label>Religión</label><input type="text" name="madre_religion"></div>
+                <div class="form-group"><label>Tel. Personal</label><input type="text" name="madre_telefono"></div>
+                <div class="form-group"><label>Tel. Trabajo</label><input type="text" name="madre_tel_trabajo"></div>
+                <div class="form-group"><label>Correo</label><input type="email" name="madre_email"></div>
+            </div>
+        </section>
+
+        <section><h3><i class="fas fa-user-shield"></i> TUTOR</h3>
+            <div class="grid">
+                <div class="form-group"><label>Nombres y Apellidos</label><input type="text" name="tutor_nombre"></div>
+                <div class="form-group"><label>Sector</label><input type="text" name="tutor_sector"></div>
+                <div class="form-group"><label>Dirección</label><input type="text" name="tutor_direccion"></div>
+                <div class="form-group"><label>Cédula</label><input type="text" name="tutor_cedula"></div>
+                <div class="form-group"><label>Oficio / Ocupación</label><input type="text" name="tutor_profesion"></div>
+                <div class="form-group"><label>Nivel Académico</label><input type="text" name="tutor_nivel"></div>
+                <div class="form-group"><label>Religión</label><input type="text" name="tutor_religion"></div>
+                <div class="form-group"><label>Tel. Personal</label><input type="text" name="tutor_telefono"></div>
+                <div class="form-group"><label>Tel. Trabajo</label><input type="text" name="tutor_tel_trabajo"></div>
+                <div class="form-group"><label>Correo</label><input type="email" name="tutor_email"></div>
+            </div>
+        </section>
+
+        <div class="btn-container" style="display: flex; gap: 15px; justify-content: center; align-items: center;">
+            <button type="reset" style="background: #e74a3b; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s;">
+                BORRAR DATOS
+            </button>
+            <button type="submit" class="btn-save">GUARDAR FICHA COMPLETA</button>
+            <a href="/menu" style="background: #858796; color: white; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s;">
+                VOLVER AL MENÚ
+            </a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

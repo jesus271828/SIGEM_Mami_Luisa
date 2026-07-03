@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Expedientes</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fc; padding: 40px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #1e293b; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
+        input { flex-grow: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        button { padding: 10px 20px; background: #1e293b; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { background: #f1f5f9; padding: 12px; text-align: left; border-bottom: 2px solid #e2e8f0; }
+        td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        .back { display: block; margin-top: 20px; color: #64748b; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Buscar Expediente Viejo</h2>
+    <form method="POST" class="search-box">
+        <input type="text" name="nombre_buscar" placeholder="Nombre del estudiante..." required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Estudiante</th>
+            <th>Año Escolar</th>
+            <th>Código de Archivo</th>
+        </tr>
+        {% for e in resultados %}
+        <tr>
+            <td>{{ e['nombre_estudiante'] }}</td>
+            <td>{{ e['ano_escolar'] }}</td>
+            <td style="font-weight: bold; color: #d97706;">{{ e['codigo_archivo'] }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3" style="text-align: center;">No se encontraron resultados.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/menu_expedientes" class="back">← Volver al sub-menú</a>
+</div>
+</body>
+</html>

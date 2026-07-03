@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Expedientes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fc; padding: 40px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #1e293b; margin-top: 0; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 30px; }
+        input { flex-grow: 1; padding: 12px; border: 1px solid #d1d3e2; border-radius: 8px; }
+        button { padding: 10px 20px; background: #1e293b; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th { background: #1e293b; color: white; padding: 15px; text-align: left; }
+        td { padding: 15px; border-bottom: 1px solid #e3e6f0; }
+        tr:hover { background: #f8f9fc; }
+        .back-link { display: inline-block; margin-top: 20px; color: #858796; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2><i class="fas fa-search"></i> Buscar Expediente</h2>
+    
+    <form method="POST" class="search-box">
+        <input type="text" name="nombre_buscar" placeholder="Nombre del estudiante..." required>
+        <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Estudiante</th>
+                <th>Año Escolar</th>
+                <th>Código de Archivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in resultados %}
+            <tr>
+                <td>{{ e['nombre_estudiante'] }}</td>
+                <td>{{ e['ano_escolar'] }}</td>
+                <td style="font-weight: bold; color: #16a34a; font-size: 1.1rem;">{{ e['codigo_archivo'] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" style="text-align: center; color: #858796;">No se encontraron resultados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="/menu_expedientes" class="back-link"><i class="fas fa-arrow-left"></i> Volver al sub-menú</a>
+</div>
+</body>
+</html>

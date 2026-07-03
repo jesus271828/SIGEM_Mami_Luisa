@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <style>
+        .presente { color: green; font-weight: bold; }
+        .ausente { color: red; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+    </style>
+</head>
+<body>
+    <h2>Reporte de Asistencia: {{ fecha }}</h2>
+    <table>
+        <tr><th>Alumno</th><th>Estado</th></tr>
+        {% for fila in reporte %}
+        <tr>
+            <td>{{ fila.nombres }} {{ fila.apellidos }}</td>
+            <td class="{{ 'presente' if fila.estado == 'Presente' else 'ausente' }}">
+                {{ fila.estado }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/menu">Volver al menú</a>
+</body>
+</html>

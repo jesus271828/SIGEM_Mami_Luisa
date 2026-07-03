@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Informe de Aprendizaje - Segundo Ciclo</title>
+    <style>
+        @media print {
+            @page { size: landscape; margin: 5mm; }
+            .btn-guardar, .btn-pdf, .selector-alumno { display: none; }
+        }
+        .page-break { page-break-after: always; }
+        body { font-family: Arial, sans-serif; font-size: 9px; padding: 10px; color: #000; }
+        .container { max-width: 1050px; margin: auto; border: 1px solid #ccc; padding: 10px; background: #fff; }
+        
+        .header-table { width: 100%; border: none; margin-bottom: 5px; }
+        .header-table td { border: none; padding: 0; vertical-align: middle; }
+        .logo-img { width: 85px; height: auto; }
+        .institucion-info { text-align: center; }
+        .nombre-centro { font-size: 16px; font-weight: bold; }
+        
+        .tabla-alumno { width: 100%; border-collapse: collapse; border: 3px solid #000; margin-bottom: 10px; }
+        .tabla-alumno td { border: 2px solid #000; padding: 5px; text-align: left; font-weight: bold; }
+        .tabla-alumno input { border: none; border-bottom: 1px solid #000; width: 60%; font-size: 10px; outline: none; }
+        
+        table { border-collapse: collapse; width: 100%; border: 2px solid #000; margin-bottom: 5px; }
+        th, td { border: 1px solid #000; padding: 2px; text-align: center; }
+        .input-nota { width: 18px; border: none; text-align: center; background: transparent; outline: none; }
+        .btn-guardar { padding: 10px 30px; background: #000; color: #fff; border: none; cursor: pointer; font-weight: bold; }
+        
+        .input-text { width: 100%; border: none; outline: none; background: transparent; }
+        .firmas { display: flex; justify-content: space-between; margin-top: 30px; text-align: center; }
+        .linea-firma { border-top: 1px solid #000; width: 200px; padding-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container page-break">
+    <table class="header-table">
+        <tr>
+            <td style="width: 10%;"><img src="{{ url_for('static', filename='logo.png') }}" class="logo-img"></td>
+            <td class="institucion-info">
+                <div class="nombre-centro">Centro Educativo Mami Luisa S.R.L</div>
+                <div>"Educando con amor para un mundo mejor"</div>
+                <div>INFORME DE APRENDIZAJE - SEGUNDO CICLO. Año Escolar 2025-2026.</div>
+            </td>
+        </tr>
+    </table>
+
+    <form action="/notas" method="GET" class="selector-alumno">
+        <table class="tabla-alumno" style="border: 2px dashed #000;">
+            <tr>
+                <td>
+                    <label for="alumno_id">SELECCIONAR ESTUDIANTE:</label>
+                    <select name="alumno_id" id="alumno_id" onchange="this.form.submit()" style="width: 50%; padding: 5px;">
+                        <option value="">-- Seleccione un alumno --</option>
+                        {% for alumno in alumnos %}
+                            <option value="{{ alumno.id }}" {% if request.args.get('alumno_id') == alumno.id|string %}selected{% endif %}>
+                                {{ alumno.nombres }} {{ alumno.apellidos }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <table class="tabla-alumno">
+        <tr>
+            <td>NOMBRE: <input type="text" name="nombre" value="{{ alumno_seleccionado.nombres if alumno_seleccionado else '' }}"></td>
+            <td>APELLIDO: <input type="text" name="apellido" value="{{ alumno_seleccionado.apellidos if alumno_seleccionado else '' }}"></td>
+            <td>ORDEN: <input type="text" name="orden" style="width: 30px;"></td>
+            <td>ID ESTUDIANTE: <input type="text" name="id" value="{{ alumno_seleccionado.id if alumno_seleccionado else '' }}"></td>
+        </tr>
+    </table>
+
+    <form action="/guardar_notas_ciclo2" method="POST">
+        <input type="hidden" name="alumno_id" value="{{ request.args.get('alumno_id') }}">
+        <table>
+            <thead>
+                <tr style="background: #eee;">
+                    <th rowspan="3">ÁREAS</th>
+                    <th colspan="8">Comunicativa</th>
+                    <th colspan="8">Pensamiento Lógico y Científico</th>
+                    <th colspan="8">Ética, Personal y Ambiental</th>
+                    <th colspan="3">Final Comp.</th>
+                    <th rowspan="3" style="writing-mode: vertical-rl; transform: rotate(180deg);">Final Área</th>
+                    <th rowspan="3" style="writing-mode: vertical-rl; transform: rotate(180deg);">Recup. Final</th>
+                    <th rowspan="3" style="writing-mode: vertical-rl; transform: rotate(180deg);">Recup. Esp.</th>
+                </tr>
+                <tr style="background: #eee;">
+                    {% for i in range(1,5) %} <th colspan="2">P{{i}}</th> {% endfor %}
+                    {% for i in range(1,5) %} <th colspan="2">P{{i}}</th> {% endfor %}
+                    {% for i in range(1,5) %} <th colspan="2">P{{i}}</th> {% endfor %}
+                    <th rowspan="2">C1</th><th rowspan="2">C2</th><th rowspan="2">C3</th>
+                </tr>
+                <tr style="background: #eee;">
+                    {% for i in range(12) %} <th>P</th><th>RP</th> {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for mat in ['Lengua Española', 'Matemática', 'Ciencias Sociales', 'Ciencias Naturaleza', 'Inglés', 'Ed. Física', 'Formación', 'Artística'] %}
+                <tr>
+                    <td style="text-align:left; font-weight:bold;">{{ mat }}</td>
+                    {% for i in range(24) %} <td><input type="number" class="input-nota" name="{{mat}}_c{{i}}"></td> {% endfor %}
+                    <td><input type="number" class="input-nota"></td><td><input type="number" class="input-nota"></td><td><input type="number" class="input-nota"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div style="text-align: right; margin-top: 10px;">
+            <button type="submit" class="btn-guardar">GUARDAR INFORME 2DO CICLO</button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <table><tr><th>OBSERVACIONES</th></tr>
+    <tr><td><input type="text" class="input-text" style="height: 80px;"></td></tr></table>
+    
+    <table>
+        <tr><th>Períodos</th><th>FIRMA TUTOR</th><th>SITUACIÓN</th></tr>
+        <tr><td>Reportes</td><td></td><td rowspan="4">Promovido [ ] Aplazado [ ] Repitente [ ]</td></tr>
+        <tr><td>...</td><td></td></tr>
+        <tr><td>...</td><td></td></tr>
+        <tr><td>...</td><td></td></tr>
+    </table>
+    <div class="firmas">
+        <div class="linea-firma">Docente</div><div class="linea-firma">Directora</div>
+    </div>
+    <div style="text-align: right; margin-top: 10px;">
+        <button type="button" class="btn-guardar" style="background-color: #555;" onclick="window.print()">IMPRIMIR INFORME</button>
+    </div>
+</div>
+</body>
+</html>

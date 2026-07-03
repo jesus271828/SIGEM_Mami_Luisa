@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SIGEM Mami Luisa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; margin: 0; }
+        .navbar { background-color: #1e293b; color: white; padding: 20px; text-align: center; font-size: 2rem; font-weight: bold; }
+        
+        .user-bar { background-color: #0f172a; color: white; padding: 15px; text-align: center; font-size: 1.2rem; }
+        
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding: 50px; justify-items: center; }
+        .card { width: 250px; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: white; border-radius: 20px; font-weight: 600; font-size: 1.3rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s; text-align: center; padding: 10px; }
+        .card i { font-size: 3rem; margin-bottom: 15px; }
+        .card:hover { transform: translateY(-10px); filter: brightness(1.1); }
+        
+        /* Colores de los botones */
+        .bg-green { background-color: #16a34a; }
+        .bg-yellow { background-color: #ca8a04; }
+        .bg-cyan { background-color: #0891b2; }
+        .bg-blue { background-color: #4f46e5; }
+        .bg-gray { background-color: #475569; }
+        .bg-purple { background-color: #7e22ce; }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">SIGEM Mami Luisa</div>
+    
+    <div class="user-bar">
+        Usuario: <strong>{{ username }}</strong> | Ciclo: <strong>{{ ciclo }}</strong> 
+        <a href="/logout" style="color: #ff9f43; margin-left: 20px; text-decoration: none;">(Salir)</a>
+    </div>
+
+   <div class="menu-grid">
+        <a href="/notas" class="card bg-green"><i class="fa-solid fa-chart-line"></i> Gestión de Notas</a>
+        
+        <a href="/pagina_busqueda" class="card bg-yellow"><i class="fa-solid fa-magnifying-glass"></i> Buscador</a>
+        
+        <a href="/listado" class="card bg-cyan"><i class="fa-solid fa-list-ul"></i> Listado General</a>
+
+        {% if session.get('rol') == 'oficina' %}
+            <a href="/inscripcion" class="card bg-blue"><i class="fa-solid fa-user-plus"></i> Nueva Inscripción</a>
+            <a href="/menu_expedientes" class="card bg-gray"><i class="fa-solid fa-folder-open"></i> Expedientes Viejos</a>
+            <a href="/registrar_usuario" class="card bg-purple"><i class="fa-solid fa-user-gear"></i> Crear Usuario</a>
+        {% endif %}
+        
+        <a href="/asistencia" class="card" style="background-color: #d946ef;"><i class="fa-solid fa-calendar-check"></i> Asistencia Diaria</a>
+    </div>
+</body>
+</html>

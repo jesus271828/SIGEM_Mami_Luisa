@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SIGEM - Acceso al Sistema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #4f46e5; --dark: #1e293b; }
+        body { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-container { background: rgba(255, 255, 255, 0.95); padding: 50px 40px; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); width: 100%; max-width: 400px; text-align: center; }
+        .logo-area { background-color: var(--primary); width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 2.5rem; }
+        h2 { color: var(--dark); margin-bottom: 10px; }
+        .input-group { position: relative; margin-bottom: 20px; text-align: left; }
+        .input-group i { position: absolute; left: 15px; top: 40px; color: #94a3b8; }
+        .input-group label { display: block; margin-bottom: 8px; color: var(--dark); font-weight: 600; font-size: 0.85rem; padding-left: 5px; }
+        .input-group input { width: 100%; padding: 12px 12px 12px 45px; border: 2px solid #e2e8f0; border-radius: 12px; box-sizing: border-box; font-size: 1rem; }
+        .btn-login { background: var(--primary); color: white; border: none; width: 100%; padding: 15px; border-radius: 12px; font-weight: bold; cursor: pointer; }
+        .footer-links { margin-top: 25px; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+        .btn-admin-add { color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-area"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h2>SIGEM</h2>
+        <p>Sistema de Gestión Mami Luisa</p>
+
+        <form action="/" method="POST">
+            <div class="input-group">
+                <label>Usuario</label> <i class="fa-solid fa-user"></i>
+                <input type="text" name="username" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="input-group">
+                <label>Contraseña</label> <i class="fa-solid fa-lock"></i>
+                <input type="password" name="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-login">Entrar al Sistema</button>
+        </form>
+
+        <div class="footer-links">
+            <a href="/registrar_usuario" class="btn-admin-add">
+                <i class="fa-solid fa-user-plus"></i> Configuración de Profesores
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
