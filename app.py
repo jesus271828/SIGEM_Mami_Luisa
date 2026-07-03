@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 import sqlite3
+import os
 
 app = Flask(__name__)
-app.secret_key = 'clave_secreta_super_segura' 
+app.secret_key = os.environ.get("SECRET_KEY", "clave_secreta_super_segura")
 
 def get_db_connection():
     conn = sqlite3.connect('colegio.db')
