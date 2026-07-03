@@ -1,0 +1,203 @@
+/* ================================
+   SIGEM v2.0 - LOGIN STYLES
+================================ */
+
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --dark: #0f172a;
+    --gray: #64748b;
+    --border: #e2e8f0;
+    --bg: #0f172a;
+    --card: rgba(255, 255, 255, 0.95);
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* BACKGROUND */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    padding: 20px;
+}
+
+/* LOGIN CARD */
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    text-align: center;
+
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* LOGO */
+.logo-area {
+    width: 90px;
+    height: 90px;
+    background: var(--primary);
+    color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    margin: 0 auto 15px;
+}
+
+/* TITLES */
+h1 {
+    color: var(--dark);
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.school-name {
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+/* INPUT GROUP */
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 13px;
+}
+
+/* ICONOS INPUT */
+.input-group .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 42px;
+    color: #94a3b8;
+}
+
+/* INPUTS */
+.input-group input {
+    width: 100%;
+    padding: 14px 40px 14px 45px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* ICONO MOSTRAR PASSWORD */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+/* RECORDARME */
+.remember {
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 15px;
+    color: var(--gray);
+}
+
+/* BOTÓN */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+.footer-links {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.btn-admin-add {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-admin-add:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 15px;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
